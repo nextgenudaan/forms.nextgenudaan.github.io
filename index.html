@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join NextGen Udaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-custom': '#4ade80',
+                        'blue-custom': '#1e3a8a'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 flex flex-col">
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4 py-8">
+        <div class="glass-card w-full max-w-2xl p-8 rounded-2xl shadow-2xl">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-green-400 mb-2">Join NextGen Udaan</h1>
+                <p class="text-gray-300 text-lg">Request Your Free Onboarding Call</p>
+            </div>
+
+            <form id="joinForm" class="space-y-6" onsubmit="submitJoinForm(event)">
+                <!-- Name -->
+                <div>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        placeholder="Your Name" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                        required 
+                    />
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        placeholder="Your Mobile Number" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                        required 
+                    />
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="Your Email" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                        required 
+                    />
+                </div>
+
+                <!-- Instagram ID -->
+                <div>
+                    <input 
+                        type="text" 
+                        id="instagramId" 
+                        placeholder="Your Instagram ID" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                    />
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <input 
+                        type="text" 
+                        id="location" 
+                        placeholder="Your Location (City, State)" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                        required 
+                    />
+                </div>
+
+                <!-- Lead Source -->
+                <div class="relative">
+                    <select 
+                        id="leadSource" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 appearance-none cursor-pointer" 
+                        required
+                        onchange="toggleOtherField()"
+                    >
+                        <option value="" disabled selected class="bg-gray-800">Where did you hear about us?</option>
+                        <option value="social_media" class="bg-gray-800">Social Media</option>
+                        <option value="website" class="bg-gray-800">Website</option>
+                        <option value="others" class="bg-gray-800">Others - Please Specify</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 text-white pointer-events-none">
+                        <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Lead Source Other (Hidden by default) -->
+                <div id="otherFieldContainer" class="hidden transition-all duration-300">
+                    <input 
+                        type="text" 
+                        id="leadSourceOther" 
+                        placeholder="Please specify where you heard about us" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                    />
+                </div>
+
+                <!-- What They Do -->
+                <div>
+                    <input 
+                        type="text" 
+                        id="whatTheyDo" 
+                        placeholder="What do you do?" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" 
+                    />
+                </div>
+
+                <!-- Why Want to Join -->
+                <div>
+                    <textarea 
+                        id="whyWantToJoin" 
+                        placeholder="Why do you want to join NextGen Udaan?" 
+                        rows="4" 
+                        class="form-input w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 resize-none" 
+                        required
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="submit-btn w-full bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-blue-900 font-bold text-lg px-8 py-4 rounded-2xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/50"
+                    >
+                        <span id="submitText">Submit Request</span>
+                        <span id="loadingText" class="hidden flex items-center justify-center">
+                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Submitting...
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Form Message -->
+                <div class="text-center min-h-[24px]">
+                    <p id="formMessage" class="text-sm font-medium transition-all duration-300 opacity-0"></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 px-4 mt-8">
+        <p class="text-gray-500 text-sm">&copy; 2025 NextGen Udaan. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyACCpl5f7g34Fs0eMxUguBuGE80SuKZCIA",
+            authDomain: "hrms-326ad.firebaseapp.com",
+            projectId: "hrms-326ad",
+            storageBucket: "hrms-326ad.firebasestorage.app",
+            messagingSenderId: "813107687048",
+            appId: "1:813107687048:web:2d3c2fff54a65285ba793d",
+            measurementId: "G-HXGFCBV64Q"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        window.submitJoinForm = async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const instagramId = document.getElementById('instagramId').value;
+            const location = document.getElementById('location').value;
+            const leadSource = document.getElementById('leadSource').value;
+            const leadSourceOther = document.getElementById('leadSourceOther').value;
+            const whatTheyDo = document.getElementById('whatTheyDo').value;
+            const whyWantToJoin = document.getElementById('whyWantToJoin').value;
+            const formMessage = document.getElementById('formMessage');
+
+            let finalLeadSource = leadSource;
+            if (leadSource === 'others') {
+                finalLeadSource = `Others: ${leadSourceOther}`;
+            }
+
+            // Show loading state
+            showLoading(true);
+
+            try {
+                await addDoc(collection(db, 'joinRequests'), {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    instagramId: instagramId,
+                    location: location,
+                    leadSource: finalLeadSource,
+                    whatTheyDo: whatTheyDo,
+                    whyWantToJoin: whyWantToJoin,
+                    timestamp: serverTimestamp()
+                });
+                
+                showLoading(false);
+                showMessage('🎉 Your request has been submitted successfully! We\'ll get back to you soon.', true);
+                document.getElementById('joinForm').reset();
+                document.getElementById('otherFieldContainer').classList.add('hidden');
+                document.getElementById('leadSourceOther').required = false;
+                
+            } catch (error) {
+                console.error("Error writing document: ", error);
+                showLoading(false);
+                showMessage('❌ Error submitting your request. Please try again.', false);
+            }
+        };
+    </script>
+
+    <script>
+        function toggleOtherField() {
+            const leadSource = document.getElementById('leadSource').value;
+            const otherContainer = document.getElementById('otherFieldContainer');
+            const otherInput = document.getElementById('leadSourceOther');
+            
+            if (leadSource === 'others') {
+                otherContainer.classList.remove('hidden');
+                otherInput.required = true;
+            } else {
+                otherContainer.classList.add('hidden');
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+
+        function showLoading(show) {
+            const submitText = document.getElementById('submitText');
+            const loadingText = document.getElementById('loadingText');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (show) {
+                submitText.classList.add('hidden');
+                loadingText.classList.remove('hidden');
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                submitBtn.classList.remove('hover:scale-105');
+            } else {
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                submitBtn.classList.add('hover:scale-105');
+            }
+        }
+
+        function showMessage(message, isSuccess) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = message;
+            formMessage.classList.remove('text-green-400', 'text-red-400', 'opacity-0');
+            formMessage.classList.add(isSuccess ? 'text-green-400' : 'text-red-400', 'opacity-100');
+            
+            // Auto-hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('opacity-0');
+                setTimeout(() => {
+                    if (formMessage.classList.contains('opacity-0')) {
+                        formMessage.textContent = '';
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add entrance animation
+            const glassCard = document.querySelector('.glass-card');
+            glassCard.style.opacity = '0';
+            glassCard.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                glassCard.style.transition = 'all 0.6s ease-out';
+                glassCard.style.opacity = '1';
+                glassCard.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
