@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="forest">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nextgen Udaan - Join</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="nextlogo.png">
+    
+    <!-- Tailwind CSS & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
@@ -22,131 +26,149 @@
     </script>
 </head>
 
-<body class="min-h-screen text-white flex flex-col items-center justify-center relative">
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
     <!-- Immersive Background -->
     <div class="bg-immersive"></div>
     <div class="bg-overlay"></div>
-
+    
     <!-- Main Content -->
-    <main class="w-full flex items-center justify-center px-4 py-6 z-10">
-        <div class="glass-card w-full max-w-2xl p-6 md:p-8">
-            <div class="text-center mb-6">
-                <h1 class="text-2xl md:text-3xl font-bold text-green-400 mb-1">Join NextGen Udaan</h1>
-                <p class="text-gray-300 text-base">Request Your Free Onboarding Call</p>
-            </div>
+    <main class="w-full max-w-3xl z-10">
+        <div class="card bg-base-100 shadow-xl border border-base-300">
+            <div class="card-body p-6 md:p-10">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">Join NextGen Udaan</h1>
+                    <p class="text-base-content/70 text-lg">Request Your Free Onboarding Call</p>
+                </div>
 
-            <form id="joinForm" class="space-y-4" onsubmit="submitJoinForm(event)">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Name -->
-                    <div>
-                        <input type="text" id="name" placeholder="Your Name"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                            required />
-                    </div>
+                <form id="joinForm" class="space-y-6" onsubmit="submitJoinForm(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Name -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Full Name</span>
+                            </label>
+                            <input type="text" id="name" placeholder="John Doe"
+                                class="input input-bordered w-full focus:input-primary"
+                                required />
+                        </div>
 
-                    <!-- Phone -->
-                    <div>
-                        <input type="tel" id="phone" placeholder="Your Mobile Number"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                            required />
-                    </div>
+                        <!-- Phone -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Phone Number</span>
+                            </label>
+                            <input type="tel" id="phone" placeholder="+91 98765 43210"
+                                class="input input-bordered w-full focus:input-primary"
+                                required />
+                        </div>
 
-                    <!-- Email -->
-                    <div>
-                        <input type="email" id="email" placeholder="Your Email"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                            required />
-                    </div>
+                        <!-- Email -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Email Address</span>
+                            </label>
+                            <input type="email" id="email" placeholder="john@example.com"
+                                class="input input-bordered w-full focus:input-primary"
+                                required />
+                        </div>
 
-                    <!-- Age -->
-                    <div>
-                        <input type="number" id="age" placeholder="Your Age" min="18" max="80"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                            required />
-                    </div>
+                        <!-- Age -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Age</span>
+                            </label>
+                            <input type="number" id="age" placeholder="25" min="18" max="80"
+                                class="input input-bordered w-full focus:input-primary"
+                                required />
+                        </div>
 
-                    <!-- Instagram ID -->
-                    <div>
-                        <input type="text" id="instagramId" placeholder="Your Instagram ID"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" />
-                    </div>
+                        <!-- Instagram ID -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Instagram ID</span>
+                            </label>
+                            <input type="text" id="instagramId" placeholder="@username"
+                                class="input input-bordered w-full focus:input-primary" />
+                        </div>
 
-                    <!-- Location -->
-                    <div>
-                        <input type="text" id="location" placeholder="Your Location (City, State)"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                            required />
-                    </div>
+                        <!-- Location -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Location</span>
+                            </label>
+                            <input type="text" id="location" placeholder="City, State"
+                                class="input input-bordered w-full focus:input-primary"
+                                required />
+                        </div>
 
-                    <!-- Lead Source -->
-                    <div class="relative">
-                        <select id="leadSource"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 appearance-none cursor-pointer"
-                            required onchange="toggleOtherField()">
-                            <option value="" disabled selected class="bg-gray-800">Where did you hear about us?</option>
-                            <option value="Instagram" class="bg-gray-800">Instagram</option>
-                            <option value="WhatsApp" class="bg-gray-800">WhatsApp</option>
-                            <option value="Referral" class="bg-gray-800">Referral</option>
-                            <option value="Event" class="bg-gray-800">Event</option>
-                            <option value="others" class="bg-gray-800">Others - Please Specify</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-4 text-white pointer-events-none">
-                            <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
+                        <!-- Lead Source -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">How did you hear about us?</span>
+                            </label>
+                            <select id="leadSource"
+                                class="select select-bordered w-full focus:select-primary"
+                                required onchange="toggleOtherField()">
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Referral">Referral</option>
+                                <option value="Event">Event</option>
+                                <option value="others">Others - Please Specify</option>
+                            </select>
+                        </div>
+
+                        <!-- What They Do -->
+                        <div class="form-control w-full">
+                            <label class="label">
+                                <span class="label-text font-medium">Current Occupation</span>
+                            </label>
+                            <input type="text" id="whatTheyDo" placeholder="Student, Job, Business..."
+                                class="input input-bordered w-full focus:input-primary" />
                         </div>
                     </div>
 
-                    <!-- What They Do -->
-                    <div>
-                        <input type="text" id="whatTheyDo" placeholder="What do you do?"
-                            class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" />
+                    <!-- Lead Source Other (Hidden by default) -->
+                    <div id="otherFieldContainer" class="form-control w-full hidden transition-all duration-300">
+                        <label class="label">
+                            <span class="label-text font-medium">Please Specify</span>
+                        </label>
+                        <input type="text" id="leadSourceOther" placeholder="Tell us where you heard about us"
+                            class="input input-bordered w-full focus:input-primary" />
                     </div>
-                </div>
 
-                <!-- Lead Source Other (Hidden by default) -->
-                <div id="otherFieldContainer" class="hidden transition-all duration-300">
-                    <input type="text" id="leadSourceOther" placeholder="Please specify where you heard about us"
-                        class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300" />
-                </div>
+                    <!-- Why Want to Join -->
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text font-medium">Why do you want to join NextGen Udaan?</span>
+                        </label>
+                        <textarea id="whyWantToJoin" placeholder="Share your motivation..." rows="3"
+                            class="textarea textarea-bordered h-24 w-full focus:textarea-primary"
+                            required></textarea>
+                    </div>
 
-                <!-- Why Want to Join -->
-                <div>
-                    <textarea id="whyWantToJoin" placeholder="Why do you want to join NextGen Udaan?" rows="2"
-                        class="form-input w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 resize-none"
-                        required></textarea>
-                </div>
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" id="submitBtn"
+                            class="btn btn-primary w-full text-lg shadow-lg hover:scale-[1.02] transition-transform">
+                            <span id="submitText">Submit Request</span>
+                            <span id="loadingText" class="hidden loading loading-spinner loading-md"></span>
+                            <span id="loadingLabel" class="hidden ml-2">Submitting...</span>
+                        </button>
+                    </div>
 
-                <!-- Submit Button -->
-                <div class="pt-4">
-                    <button type="submit" id="submitBtn"
-                        class="submit-btn w-full bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-blue-900 font-bold text-lg px-8 py-4 rounded-2xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/50">
-                        <span id="submitText">Submit Request</span>
-                        <span id="loadingText" class="hidden flex items-center justify-center">
-                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-900"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                    stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                                </path>
-                            </svg>
-                            Submitting...
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Form Message -->
-                <div class="text-center min-h-[24px]">
-                    <p id="formMessage" class="text-sm font-medium transition-all duration-300 opacity-0"></p>
-                </div>
-            </form>
+                    <!-- Form Message -->
+                    <div class="text-center min-h-[24px]">
+                        <p id="formMessage" class="text-sm font-medium transition-all duration-300 opacity-0"></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-4 px-4">
-        <p class="text-gray-500 text-sm">&copy; 2025 NextGen Udaan. All rights reserved.</p>
+    <footer class="text-center py-6 px-4">
+        <p class="text-base-content/50 text-sm">&copy; 2026 NextGen Udaan. All rights reserved.</p>
     </footer>
 
     <script type="module">
@@ -240,28 +262,27 @@
         function showLoading(show) {
             const submitText = document.getElementById('submitText');
             const loadingText = document.getElementById('loadingText');
+            const loadingLabel = document.getElementById('loadingLabel');
             const submitBtn = document.getElementById('submitBtn');
 
             if (show) {
                 submitText.classList.add('hidden');
                 loadingText.classList.remove('hidden');
+                loadingLabel.classList.remove('hidden');
                 submitBtn.disabled = true;
-                submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-                submitBtn.classList.remove('hover:scale-105');
             } else {
                 submitText.classList.remove('hidden');
                 loadingText.classList.add('hidden');
+                loadingLabel.classList.add('hidden');
                 submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                submitBtn.classList.add('hover:scale-105');
             }
         }
 
         function showMessage(message, isSuccess) {
             const formMessage = document.getElementById('formMessage');
             formMessage.textContent = message;
-            formMessage.classList.remove('text-green-400', 'text-red-400', 'opacity-0');
-            formMessage.classList.add(isSuccess ? 'text-green-400' : 'text-red-400', 'opacity-100');
+            formMessage.classList.remove('text-success', 'text-error', 'opacity-0');
+            formMessage.classList.add(isSuccess ? 'text-success' : 'text-error', 'opacity-100');
 
             // Auto-hide message after 5 seconds
             setTimeout(() => {
@@ -277,14 +298,14 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function () {
             // Add entrance animation
-            const glassCard = document.querySelector('.glass-card');
-            glassCard.style.opacity = '0';
-            glassCard.style.transform = 'translateY(20px)';
+            const card = document.querySelector('.card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease-out';
 
             setTimeout(() => {
-                glassCard.style.transition = 'all 0.6s ease-out';
-                glassCard.style.opacity = '1';
-                glassCard.style.transform = 'translateY(0)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
             }, 100);
         });
     </script>
